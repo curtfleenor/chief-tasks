@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer"><title>Withings sign-in relay</title></head>
+<body>
+<p>Sending Withings sign-in to Grok Bot…</p>
+<p id="fb" hidden>If nothing happens, <a id="lnk" href="#">click here</a>. Code: <code id="code"></code></p>
+<script>
+(function () {
+  var q = window.location.search || "";
+  var target = "http://localhost:8765/" + q;
+  var p = new URLSearchParams(q);
+  document.getElementById("lnk").href = target;
+  document.getElementById("code").textContent = p.get("code") || p.get("error") || "(none)";
+  document.getElementById("fb").hidden = false;
+  window.location.replace(target);
+})();
+</script>
+</body></html>
